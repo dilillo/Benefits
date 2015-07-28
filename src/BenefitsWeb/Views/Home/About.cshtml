@@ -1,7 +1,63 @@
 ﻿@{
     ViewBag.Title = "About";
 }
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
+<h2>@ViewBag.Title</h2>
 
-<p>Use this area to provide additional information.</p>
+<p>
+    While this was supposed to be a simple example of an Angular/MVC/WebAPI front-end sitting in front of a typically business in data layer, I figured where’s the fun in that?  And decided to do something more interesting.  So now this is an Angular/MVC/WebAPI front-end sitting in front of a CQRS-style backend that utilizes the Event Sourcing technique to execute business logic.
+    Obviously, this is overkill in a simple example but I think it makes sense to the end that in a real implementation of a Benefits Manager application you would likely want to utilize DDD techniques and something like CQRS to keep the separation of concerns between the logic to read and write data protected.  Likewise, as such applications are typically very concerned with auditing and historical transparency I thought the Event Sourcing pattern made a lot of sense as a means to model the write-side of the data model.
+</p>
+
+<h3>Things I liked when this was all said and done</h3>
+<ul>
+    <li>
+        Cleanliness of the business logic in the EmployeeAggregate class
+    </li>
+    <li>
+        Separation of read and write concerns achieved through the use of the Command and Event Bus
+    </li>
+    <li>
+        Ability to add additional event handlers and read side data store schema without affecting the write side business logic
+    </li>
+    <li>
+        How changes to the state of an employee over time could be observed via the event table (and possibly reported on)
+    </li>
+    <li>
+        How minimal the write side of the data store is when you don’t have to worry about supporting presentation inspired queries
+    </li>
+</ul>
+
+<h3>Things I didn’t like or would do different especially if this was for real</h3>
+<ul>
+    <li>
+        Use TypeScript for the JavaScript
+    </li>
+    <li>
+        Use NServiceBus, MassTransit, or Azure Service bus for the event publishing
+    </li>
+    <li>
+        Set up paging and filtering on the Employee Index Page
+    </li>
+    <li>
+        Write a lot more unit tests
+    </li>
+    <li>
+        Add support to prioritize the event handlers
+    </li>
+    <li>
+        Write the code to merge changes into the cache rather than just refreshing from the DB every time
+    </li>
+    <li>
+        Comment the JavaScript
+    </li>
+</ul>
+
+<h3>Credits</h3>
+<ul>
+    <li>
+        Mainly Puralsight for their AngularJS and Forms with AngularJS courses
+    </li>
+    <li>
+        I’d also say Dino Esposito’s MSDN columns helped get me thinking even though I didn’t use the Saga model he put forth
+    </li>
+</ul>

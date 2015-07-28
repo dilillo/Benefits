@@ -14,9 +14,15 @@ using System.Linq;
 
 namespace BenefitsCommandBizTests
 {
+    /// <summary>
+    /// Container for tests targeting the EmployeeAggregate object.
+    /// </summary>
     [TestClass]
     public class EmployeeAggregateTests
     {
+        /// <summary>
+        /// Tests to make sure a create command is handled successfully.
+        /// </summary>
         [TestMethod]
         public void TestBasicCreateCommandHandling()
         {
@@ -34,6 +40,9 @@ namespace BenefitsCommandBizTests
             Assert.IsNotNull(empCreatedEvent);
         }
 
+        /// <summary>
+        /// Tests to make sure a basic pay for 1 employee can be calculated.
+        /// </summary>
         [TestMethod]
         public void TestBasicPayCalculation()
         {
@@ -55,6 +64,9 @@ namespace BenefitsCommandBizTests
             Assert.AreEqual(1962M, empCreatedEvent.Data.NetPay);
         }
 
+        /// <summary>
+        /// Tests to make sure a basic pay for 1 employee with 1 dependent can be calculated.
+        /// </summary>
         [TestMethod]
         public void TestBasicPayWithDependentCalculation()
         {
@@ -80,6 +92,9 @@ namespace BenefitsCommandBizTests
             Assert.AreEqual(1943M, empCreatedEvent.Data.NetPay);
         }
 
+        /// <summary>
+        /// Tests to make sure a discounted pay for 1 employee can be calculated.
+        /// </summary>
         [TestMethod]
         public void TestDiscountPayCalculation()
         {
@@ -105,6 +120,9 @@ namespace BenefitsCommandBizTests
             Assert.AreEqual(1965.8M, empCreatedEvent.Data.NetPay);
         }
 
+        /// <summary>
+        /// Tests to make sure an edit command can be handled successfully.
+        /// </summary>
         [TestMethod]
         public void TestBasicEditCommandHandling()
         {
@@ -122,6 +140,9 @@ namespace BenefitsCommandBizTests
             Assert.IsNotNull(empEditedEvent);
         }
 
+        /// <summary>
+        /// Tests to make a delete command can be handled successfully.
+        /// </summary>
         [TestMethod]
         public void TestBasicDeleteCommandHandling()
         {
@@ -139,6 +160,10 @@ namespace BenefitsCommandBizTests
             Assert.IsNotNull(empDeletedEvent);
         }
 
+        /// <summary>
+        /// Creates a mock of the write side data model.
+        /// </summary>
+        /// <returns>mock</returns>
         static ICommandDataModel CreateDataModelMock()
         {
             var emp = new Employee { Id = "1", Name = "ThatGuy", IsDeleted = false };
@@ -182,6 +207,10 @@ namespace BenefitsCommandBizTests
             return mockContext.Object;
         }
 
+        /// <summary>
+        /// Creates an EmployeeModel for use in testing new employee scenarios.
+        /// </summary>
+        /// <returns>Configured EmployeeModel instance</returns>
         static EmployeeModel CreateNewEmployeeModel()
         {
             return new EmployeeModel() 
@@ -190,6 +219,10 @@ namespace BenefitsCommandBizTests
             };
         }
 
+        /// <summary>
+        /// Creates an EmployeeModel for use in testing existing employee scenarios.
+        /// </summary>
+        /// <returns>Configured EmployeeModel instance</returns>
         static EmployeeModel CreateExistingEmployeeModel()
         {
             return new EmployeeModel()

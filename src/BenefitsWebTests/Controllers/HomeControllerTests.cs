@@ -9,9 +9,15 @@ using System.Web.Mvc;
 
 namespace BenefitsWebTests.Controllers
 {
+    /// <summary>
+    /// Container for tests of the HomeController class.
+    /// </summary>
     [TestClass]
     public class HomeControllerTests
     {
+        /// <summary>
+        /// Tests the Index method.
+        /// </summary>
         [TestMethod]
         public void IndexTest()
         {
@@ -30,6 +36,10 @@ namespace BenefitsWebTests.Controllers
             Assert.AreEqual(4000, model.NetPay);
         }
 
+        /// <summary>
+        /// Creates a mock of the IQueries interface.
+        /// </summary>
+        /// <returns>Configured mock</returns>
         static IQueries CreateIQueriesMock()
         {
             var kpis = new List<Kpi>()

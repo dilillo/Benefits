@@ -11,9 +11,15 @@ using System.Linq;
 
 namespace BenefitsWebTests.Controllers
 {
+    /// <summary>
+    /// Container for tests targeting the EmployeesApiController class.
+    /// </summary>
     [TestClass]
     public class EmployeesApiControllerTests
     {
+        /// <summary>
+        /// Tests the GetAll method.
+        /// </summary>
         [TestMethod]
         public void GetTest()
         {
@@ -25,6 +31,9 @@ namespace BenefitsWebTests.Controllers
             Assert.AreEqual(2, result.Count());
         }
 
+        /// <summary>
+        /// Tests the GetById method.
+        /// </summary>
         [TestMethod]
         public void GetByIdTest()
         {
@@ -34,6 +43,9 @@ namespace BenefitsWebTests.Controllers
             Assert.IsNotNull(result);
         }
 
+        /// <summary>
+        /// Tests the Post method.
+        /// </summary>
         [TestMethod]
         public void PostTest()
         {
@@ -48,6 +60,9 @@ namespace BenefitsWebTests.Controllers
             cmdBus.Verify(i => i.Execute(It.IsAny<MessageBase>()));
         }
 
+        /// <summary>
+        /// Tests the Put method.
+        /// </summary>
         [TestMethod]
         public void PutTest()
         {
@@ -60,6 +75,9 @@ namespace BenefitsWebTests.Controllers
             cmdBus.Verify(i => i.Execute(It.IsAny<MessageBase>()));
         }
 
+        /// <summary>
+        /// Tests the Delete method
+        /// </summary>
         [TestMethod]
         public void DeleteTest()
         {
@@ -71,6 +89,10 @@ namespace BenefitsWebTests.Controllers
             cmdBus.Verify(i => i.Execute(It.IsAny<MessageBase>()));
         }
 
+        /// <summary>
+        /// Creates an EmployeeDetailViewModel instance for use in testing new employee scenarios.
+        /// </summary>
+        /// <returns>Configured instance</returns>
         static EmployeeDetailViewModel CreateNewEmployeeDetailViewModel()
         {
             return new EmployeeDetailViewModel()
@@ -79,6 +101,10 @@ namespace BenefitsWebTests.Controllers
             };
         }
 
+        /// <summary>
+        /// Creates an EmployeeDetailViewModel instance for use in testing existing employee scenarios.
+        /// </summary>
+        /// <returns>Configured instance</returns>
         static EmployeeDetailViewModel CreateExistingEmployeeDetailViewModel()
         {
             return new EmployeeDetailViewModel()
@@ -92,6 +118,10 @@ namespace BenefitsWebTests.Controllers
             };
         }
 
+        /// <summary>
+        /// Creates a mock of the IQueries interface.
+        /// </summary>
+        /// <returns>Configured mock</returns>
         static IQueries CreateIQueriesMock()
         {
             var employee1 = new EmployeeDetail()
@@ -135,6 +165,10 @@ namespace BenefitsWebTests.Controllers
             return mock.Object;
         }
 
+        /// <summary>
+        /// Creates a mock of the ICommandBus interface.
+        /// </summary>
+        /// <returns>Configured mock.</returns>
         static ICommandBus CreateICommandBusMock()
         {
             var mock = new Mock<ICommandBus>();
