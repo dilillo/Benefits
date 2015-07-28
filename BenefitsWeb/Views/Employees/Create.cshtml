@@ -1,0 +1,18 @@
+﻿@{
+    ViewBag.Title = "New Employee";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<div ng-app="createModule" ng-controller="createController">
+    @Html.Partial("_EditorPartial")
+</div>
+
+@section scripts {
+
+    <script src="~/Scripts/angular.min.js"></script>
+    <script src="~/ViewScripts/Shared/Services.js"></script>
+    <script src="~/ViewScripts/Shared/Directives.js"></script>
+    <script src="~/ViewScripts/Employees/Create.js"></script>
+
+}

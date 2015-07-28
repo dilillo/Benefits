@@ -1,0 +1,30 @@
+﻿@model BenefitsWeb.Models.KpisViewModel
+@{
+    ViewBag.Title = "Home";
+}
+
+<div class="jumbotron">
+    <h1>BENEFITS MANAGER</h1>
+    <p class="lead">This is an application for managing the benefits of employees.  It's simple and takes a lot of shortcuts but hopefully serves as a decent example of a CQRS-style architecture and Event Sourcing.</p>
+    <p><a href="@Url.Action("About")" class="btn btn-primary btn-lg">Learn more</a>
+    <a href="@Url.Action("Index", "Employees")" class="btn btn-info btn-lg">Go to Employees</a></p>
+</div>
+
+<div class="row">
+    <div class="col-md-3 col-sm-6">
+        <h2>Employees</h2>
+        <h3>@Model.Employees</h3>
+    </div>
+    <div class="col-md-3 col-sm-6">
+        <h2>Gross Pay</h2>
+        <h3>@string.Format("${0:N0}", Model.GrossPay)</h3>
+    </div>
+    <div class="col-md-3 col-sm-6">
+        <h2>Benefits</h2>
+        <h3>@string.Format("${0:N0}", Model.Benefits)</h3>
+    </div>
+    <div class="col-md-3 col-sm-6">
+        <h2>Net Pay</h2>
+        <h3>@string.Format("${0:N0}", Model.NetPay)</h3>
+    </div>
+</div>

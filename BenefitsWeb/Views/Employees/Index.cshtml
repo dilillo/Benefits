@@ -1,0 +1,44 @@
+﻿
+@{
+    ViewBag.Title = "Employees";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<div ng-app="indexModule" ng-controller="indexController">
+
+    <div ng-hide="employees.length > 0">
+        <h2><small>You got no employees.  Better start hiring ...</small></h2>
+    </div>
+
+    <table class="table table-striped" ng-show="employees.length > 0">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="emp in employees">
+                <td>{{emp.name}}</td>
+                <td><a href="@Url.Action("Details")/{{emp.id}}">Details</a></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div style="margin-top:20px">
+        <a href="@Url.Action("Create")" class="btn btn-primary">New</a>
+        <button type="button" class="btn btn-default" ng-click="refresh()">Refresh</button>
+    </div>
+
+    @Html.Partial("_ProgressModalPartial")
+
+</div>
+
+@section scripts {
+
+    <script src="~/Scripts/angular.min.js"></script>
+    <script src="~/ViewScripts/Shared/Services.js"></script>
+    <script src="~/ViewScripts/Employees/Index.js"></script>
+
+}

@@ -1,0 +1,28 @@
+﻿@{
+    ViewBag.Title = "New Dependent";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<div id="page-content" ng-controller="createController">
+    @Html.Partial("_EditorPartial")
+</div>
+
+@section scripts {
+
+    <script src="~/Scripts/angular.min.js"></script>
+    <script src="~/ViewScripts/Shared/Services.js"></script>
+    <script src="~/ViewScripts/Shared/Directives.js"></script>
+    <script src="~/ViewScripts/Dependents/Create.js"></script>
+
+    <script type="text/javascript">
+
+    var mod = angular.module("createModule").value("employeeId", "@ViewBag.EmployeeId");
+
+        angular.element(document).ready(function () {
+            angular.bootstrap("#page-content", ["createModule"]);
+        });
+
+    </script>
+
+}
